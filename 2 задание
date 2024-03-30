@@ -1,0 +1,57 @@
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.key = False
+        self.picks = False
+        self.door_opened = False
+
+    def find_key(self):
+        self.key = True
+        print(f"{self.name}, вы нашли ключ от ящика.")
+
+    def find_picks(self):
+        self.picks = True
+        print(f"{self.name}, вы нашли отмычку от двери.")
+
+    def open_door(self):
+        if self.key and self.picks:
+            self.door_opened = True
+            print(f"{self.name}, вы успешно сбежали!")
+        else:
+            print(f"{self.name}, вы не можете открыть дверь без ключа и отмычки.")
+
+def main():
+    print("Вы просыпаетесь в комнате. Какое у вас имя?")
+    name = input()
+    player = Player(name)
+
+    while True:
+        print("Вы можете:")
+        print("1. Открыть дверь")
+        print("2. Заглянуть под кровать")
+        print("3. Открыть ящик в углу комнаты")
+        print("4. Открыть вентиляцию")
+        print("5. Взглянуть на тумбочку")
+        print("6. Взглянуть на статую рядом с дверью")
+        choice = input("Введите номер действия: ")
+
+        if choice == "1":
+            player.open_door()
+        elif choice == "2":
+            player.find_key()
+        elif choice == "3":
+            player.find_picks()
+        elif choice == "4":
+            print("Вы попробовали открыть вентиляцию, но ничего не нашли.")
+        elif choice == "5":
+            print("Вы поглядели на тумбочку, но ничего не нашли.")
+        elif choice == "6":
+            print("Вы поглядели на статую, но ничего не нашли.")
+        else:
+            print("Неверный выбор. Попробуйте снова.")
+
+        if player.door_opened:
+            break
+
+if __name__ == "__main__":
+    main()
