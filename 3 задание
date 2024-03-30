@@ -1,0 +1,6 @@
+from pathlib import Path
+
+file_path = 'C:/Users/User1/Documents/file1.txt'
+
+full_name = Path(file_path).name
+print(full_name)
